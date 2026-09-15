@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MBTI 性格小测试</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+
+  <!-- ===== 视图一：首页 ===== -->
+  <section id="view-home" class="view active">
+    <div class="brand">
+      <div class="badge">10 题 · 约 3 分钟</div>
+      <h1>MBTI 性格小测试</h1>
+      <p class="subtitle">测出你的 4 字母性格类型和四维度倾向</p>
+    </div>
+    <div class="card">
+      <ul class="home-desc">
+        <li>共 10 道选择题，每题二选一，凭第一直觉作答</li>
+        <li>测完立即显示性格类型和四个维度的倾向比例</li>
+        <li>无需注册，结果只保存在本页，关闭后不保留</li>
+      </ul>
+      <div style="margin-top:26px;">
+        <button class="btn btn-primary" onclick="startQuiz()">开始测试</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 视图二：答题 ===== -->
+  <section id="view-quiz" class="view">
+    <div class="card">
+      <div class="quiz-top">
+        <span class="progress-text" id="progress-text">第 1 / 10 题</span>
+        <span id="progress-count"></span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="q-dim" id="q-dim"></div>
+      <div class="q-text" id="q-text"></div>
+      <div class="options">
+        <button class="option" id="opt-a" onclick="choose(0)">
+          <span class="tag">A</span><span id="opt-a-text"></span>
+        </button>
+        <button class="option" id="opt-b" onclick="choose(1)">
+          <span class="tag">B</span><span id="opt-b-text"></span>
+        </button>
+      </div>
+      <div class="quiz-bottom">
+        <button class="btn-back" id="btn-back" onclick="goPrev()">← 上一题</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 视图三：结果 ===== -->
+  <section id="view-result" class="view">
+    <div class="card">
+      <div class="result-head">
+        <div class="label">你的性格类型是</div>
+        <div class="type-code" id="type-code"></div>
+        <div class="type-name" id="type-name"></div>
+        <div id="tie-banner" style="display:none;">
+          <div class="type-tag">部分维度倾向持平，可稍后再测一次</div>
+        </div>
+      </div>
+      <div id="dim-list"></div>
+      <div class="result-foot">
+        <button class="btn btn-primary" onclick="restart()">重新测试</button>
+        <p class="result-note">本测试结果只保存在本页，关闭或刷新后不保留。</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+<script src="questions.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
